@@ -1,0 +1,50 @@
+﻿@model OrganikPazar_Odev.Models.Category
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/ManagerPanel/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Areas/ManagerPanel/Assets/CategoryAddCSS.css" rel="stylesheet" />
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <h2>Add Category</h2>
+        </div>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken();
+            @Html.ValidationSummary();
+
+            if (TempData["basarili"] != null)
+            {
+                <div class="basarili">
+                    @TempData["basarili"]
+                </div>
+            }
+            if (TempData["basarisiz"] != null)
+            {
+                <div class="basarisiz">
+                    @TempData["basarisiz"]
+                </div>
+            }
+            <div class="row">
+                <label class="control-label">Category Name</label>
+                @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "validationMessage" })
+            </div>
+            <div class="row">
+                <label for="IsActive">Active Category</label>
+                <div style="margin-left:2px">
+                    @Html.EditorFor(model => model.IsActive)
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" class="formButton" value="Add Category" />
+            </div>
+        }
+    </div>
+</div>
+

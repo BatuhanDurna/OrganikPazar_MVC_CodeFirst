@@ -1,0 +1,126 @@
+﻿/* ====================== ORGANİK PAZAR - CREATE FORM CSS ====================== */
+.card {
+    background: #F5EDE1;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(74, 112, 67, 0.15);
+    overflow: hidden;
+    margin: 30px auto;
+    max-width: 650px;
+    border: 1px solid #8BC34A;
+}
+
+.card-header {
+    background: linear-gradient(135deg, #4A7043, #6B9B5E);
+    padding: 25px 30px;
+    color: white;
+}
+
+.card-title h2 {
+    margin: 0;
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -0.5px;
+}
+
+/* Form içeriği */
+.card-body {
+    padding: 40px 35px;
+    background: #fff;
+}
+
+/* Başarı / Hata mesajları */
+.basarili {
+    background: #E8F5E9;
+    color: #2E7D32;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    border-left: 5px solid #4A7043;
+}
+
+.basarisiz {
+    background: #FFEBEE;
+    color: #C62828;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    border-left: 5px solid #C62828;
+}
+
+/* Satırlar */
+.row {
+    margin-bottom: 28px;
+}
+
+    .row label {
+        display: block;
+        font-weight: 600;
+        color: #2C3E2F;
+        margin-bottom: 8px;
+        font-size: 15px;
+        letter-spacing: 0.3px;
+    }
+
+/* Input ve EditorFor stilleri */
+.form-control {
+    border: 2px solid #E0E0E0;
+    border-radius: 12px;
+    padding: 9px 18px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #FAF9F5;
+    color: #2C3E2F;
+}
+
+    .form-control:focus {
+        border-color: #8BC34A;
+        box-shadow: 0 0 0 4px rgba(139, 195, 74, 0.15);
+        outline: none;
+        background: white;
+    }
+
+/* Checkbox (IsActive) */
+.row input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    accent-color: #4A7043;
+    cursor: pointer;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Submit Butonu */
+.formButton {
+    background: linear-gradient(135deg, #4A7043, #6B9B5E);
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 20px rgba(74, 112, 67, 0.3);
+    width: 100%;
+    margin-top: 15px;
+}
+
+    .formButton:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 30px rgba(74, 112, 67, 0.4);
+        background: linear-gradient(135deg, #3D5C38, #5A8A4F);
+    }
+
+/* Validation mesajları */
+.validationMessage {
+    color: #C62828;
+    font-size: 13px;
+    margin-top: 5px;
+    display: block;
+}
+
+
+

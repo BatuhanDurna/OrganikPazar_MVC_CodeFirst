@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
+namespace OrganikPazarMVC_WebApp.Areas.ManagerPanel.Data
+{
+    public class ManagerLoginViewModel
+    {
+        [Required(ErrorMessage = "Mail adresi zorunludur")]
+        [EmailAddress(ErrorMessage = "Geçerli bir email gir")]
+        [DataType(DataType.EmailAddress)]
+        public string Mail { get; set; }
+
+        [Required(ErrorMessage = "Şifre zorunludur")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+    }
+}

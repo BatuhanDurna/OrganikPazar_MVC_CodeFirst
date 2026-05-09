@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/AssestForUser/UserIndexCSS.css" rel="stylesheet" />
+    <link href="~/AssestForUser/bootstrap-5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <div class="card-img">
+                <a href="@Url.Action("Index","Index")">
+                    <img src="~/AssestForUser/OrganikUserLogo.png" width="200" />
+                </a>
+            </div>
+            @if (Session["user"] != null)
+            {
+                <div class="d-flex gap-5">
+                    <div>
+                        <a href="@Url.Action("Cart", "ProduceUser")" class="btn btn-outline-success bi bi-cart fs-4"></a>
+                    </div>
+                    <div>
+                        <a href='@Url.Action("Logout", "Sign")' class="btn btn-outline-danger bi bi-box-arrow-in-right fs-4"></a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="CardSign d-flex gap-3">
+                    <a href="@Url.Action("SignIn", "Sign")" class="btn btn-warning text text-light">SignIn</a>
+                    <a href="@Url.Action("SignUp", "Sign")" class="btn btn-outline-warning">SignUp</a>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="container">
+        <div class="card-title menu">
+            <ul>
+                <li>
+                    @{Html.RenderAction("_CreateMenu", "CategoryUser");}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card-body">
+            @RenderBody()
+        </div>
+    </div>
+    <div class="footer-stripe"></div>
+    <div class="card-footer" style="background-color: #fff2ea; height: 150pt">
+        <div class="text-gray d-flex mb-auto">
+            © 2026 Organik Pazar - Tüm hakları saklıdır
+        </div>
+        <div class="bankslogo mt-3">
+            <img src="~/AssestForUser/FooterBankalar.png" />
+        </div>
+        <div class="support">
+            <span class="gap-3 fw-bold" style="color: #57b900;">Bize Ulaşın</span> <p>organiksupport@organikpazarlama.com</p>
+        </div>
+    </div>
+    <script src="~/Areas/ManagerPanel/Assets/bootstrap-5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

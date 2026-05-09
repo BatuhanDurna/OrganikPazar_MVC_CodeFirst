@@ -1,0 +1,63 @@
+﻿@model OrganikPazar_Odev.Models.Users
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sign Up</title>
+    <link href="~/AssestForUser/SignCSS.css" rel="stylesheet" />
+</head>
+<body class="card-body">
+    <div class="loginCardContainer">
+        @using (Html.BeginForm("SignUp", "Sign", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken();
+            @Html.ValidationSummary();
+
+            <div class="row">
+                <h2>Sign Up</h2>
+            </div>
+
+            if (TempData["basarili"] != null)
+            {
+                <div class="basarili mt-3">
+                    @TempData["basarili"]
+                </div>
+            }
+            if (TempData["basarisiz"] != null)
+            {
+                <div class="basarisiz mt-3">
+                    @TempData["basarisiz"]
+                </div>
+            }
+
+            <div class="row">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "İsiminiz" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "validationMessage" })
+            </div>
+            <div class="row">
+                @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control", @placeholder = "Soyisiminiz" } })
+                @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "validationMessage" })
+            </div>
+            <div class="row">
+                @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mail adresiniz" } })
+                @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "validationMessage" })
+            </div>
+            <div class="row">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Şifreniz" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "validationMessage" })
+            </div>
+            <div class="row">
+                <input type="submit" value="Sign Up" class="formbutton" />
+            </div>
+            <div class="row">
+                <strong>Do you have any account ? <a href="@Url.Action("SignIn", "Sign")">Sign In</a> </strong>
+            </div>
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,162 @@
+﻿body {
+}
+.backButton {
+    background-color: #81B353;
+    border-radius: 7px;
+    padding: 10px;
+    width: 170px;
+    margin-left: 155px;
+}
+    .backButton a {
+        color: white;
+        text-decoration:none;
+        font-weight:600;
+    }
+.cartCarry {
+    width: 100%;
+    max-width: 1100px;
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
+}
+
+    .cartCarry .text h2 {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #2c2c2c;
+    }
+
+/* MAIN LAYOUT */
+.cart {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* TABLE */
+.cartTable {
+    width: 100%;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+    .cartTable .item {
+        border-bottom: 1px solid #eee;
+        transition: 0.2s;
+    }
+
+        .cartTable .item:hover {
+            background: #f9f9f9;
+        }
+
+    .cartTable td {
+        padding: 15px;
+        text-align: center;
+        font-size: 15px;
+        color: #333;
+    }
+
+    /* PRODUCT IMAGE (ileride eklersen diye hazır) */
+    .cartTable img {
+        width: 60px;
+        border-radius: 8px;
+    }
+
+    /* ACTION BUTTONS */
+    .cartTable td a {
+        display: inline-block;
+        padding: 6px 10px;
+        margin: 0 3px;
+        border-radius: 6px;
+        background: #eee;
+        color: #333;
+        text-decoration: none;
+        font-size: 13px;
+        transition: 0.2s;
+    }
+
+        .cartTable td a:hover {
+            background: #2c7be5;
+            color: #fff;
+        }
+
+
+/* TOTAL BOX */
+.cartSum {
+    margin-top: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, #ffffff, #f7f7f7);
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.textSum h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #2c2c2c;
+}
+
+.casa .row {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1f1f1f;
+}
+
+/* PAYMENT BUTTON */
+.paymentPage {
+    margin-top: 15px;
+}
+
+    .paymentPage a {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        background: #28a745;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: 600;
+        transition: 0.2s;
+    }
+
+        .paymentPage a:hover {
+            background: #218838;
+        }
+
+.backtoMarket a {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    background-color: orangered;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+    .backtoMarket a:hover {
+        color:black;
+    }
+
+.clearCart a {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    background: gold;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+    .clearCart a:hover {
+        color:black;
+    }
+

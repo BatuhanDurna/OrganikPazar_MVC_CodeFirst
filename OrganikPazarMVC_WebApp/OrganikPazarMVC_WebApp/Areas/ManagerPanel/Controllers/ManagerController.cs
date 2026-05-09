@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using OrganikPazarMVC_WebApp.Areas.ManagerPanel.Data;
+using OrganikPazarMVC_WebApp.Models;
+using OrganikPazar_Odev.Models;
+
+namespace OrganikPazarMVC_WebApp.Areas.ManagerPanel.Controllers
+{
+    public class ManagerController : Controller
+    {
+        // GET: ManagerPanel/Manager
+        OrganikPazarDBModel db = new OrganikPazarDBModel();
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(ManagerLoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Manager m = db.Managers.FirstOrDefault(x => x.Mail == model.Mail && x.Password == model.Password);
+                if (m != null)
+                {
+                    Session["manager"] = m;
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            return View(model);
+        }
+    }
+}

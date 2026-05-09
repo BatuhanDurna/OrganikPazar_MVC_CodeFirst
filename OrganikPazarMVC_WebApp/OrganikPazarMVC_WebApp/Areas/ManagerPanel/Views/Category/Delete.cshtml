@@ -1,0 +1,46 @@
+﻿@model OrganikPazar_Odev.Models.Category
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/ManagerPanel/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Areas/ManagerPanel/Assets/CategoryDeleteCSS.css" rel="stylesheet" />
+
+<div>
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                <h2>Delete Category</h2>
+            </div>
+        </div>
+        <div class="card-body">
+            <label class="deleteWarning">Bu kategori silinecektir emin misiniz ?</label>
+            <dl class="dl-horizonal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.CategoryName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CategoryName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IsActive)
+                </dd>
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.ID)
+
+                <div class="form-actions">
+                    <input type="submit" value="Delete Category" class="deleteButton"/> 
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "backButton" })
+                </div>
+
+            }
+        </div>
+    </div>
+</div>

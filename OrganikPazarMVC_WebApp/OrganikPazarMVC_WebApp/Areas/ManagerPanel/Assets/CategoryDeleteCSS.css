@@ -1,0 +1,158 @@
+﻿/* ====================== CATEGORY DELETE PAGE - Organik Pazar ====================== */
+
+.card {
+    background: #F5EDE1;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(74, 112, 67, 0.15);
+    overflow: hidden;
+    margin: 40px auto;
+    max-width: 680px;
+    border: 1px solid #8BC34A;
+}
+
+.card-header {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    padding: 25px 30px;
+    color: white;
+    border-bottom: none;
+}
+
+.card-title h2 {
+    margin: 0;
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -0.5px;
+    text-align: center;
+}
+
+/* Uyarı metni */
+.deleteWarning {
+    display: block;
+    background: #FFEBEE;
+    color: #C62828;
+    padding: 18px 24px;
+    border-radius: 12px;
+    margin: 0 auto 30px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    border-left: 6px solid #C62828;
+    max-width: 90%;
+    box-shadow: 0 4px 12px rgba(198, 40, 40, 0.12);
+}
+
+/* Definition List - Yatay görünüm */
+.dl-horizonal {
+    margin: 0 auto 35px;
+    max-width: 520px;
+}
+
+    .dl-horizonal dt,
+    .dl-horizonal dd {
+        padding: 14px 0;
+        border-bottom: 1px solid #e0e0e0;
+        font-size: 1.05rem;
+    }
+
+    .dl-horizonal dt {
+        font-weight: 700;
+        color: #2C3E2F;
+        width: 40%;
+        float: left;
+        clear: both;
+    }
+
+    .dl-horizonal dd {
+        margin-left: 42%;
+        color: #444;
+        font-weight: 500;
+    }
+
+/* Form butonları alanı */
+.form-actions {
+    text-align: center;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.deleteButton,
+.backButton {
+    padding: 14px 42px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    border: none;
+    font-family: 'Poppins', system-ui, sans-serif;
+}
+
+.deleteButton {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    color: white;
+}
+
+    .deleteButton:hover {
+        background: linear-gradient(135deg, #d32f2f, #b71c1c);
+        transform: translateY(-4px);
+        box-shadow: 0 14px 28px rgba(244, 67, 54, 0.35);
+    }
+
+.backButton {
+    background: #ffffff;
+    color: #2C3E2F;
+    border: 2px solid #8BC34A;
+}
+
+    .backButton:hover {
+        background: #F5EDE1;
+        transform: translateY(-3px);
+        box-shadow: 0 12px 24px rgba(74, 112, 67, 0.25);
+        color: #2C3E2F;
+    }
+
+/* Responsive düzeltmeler */
+@media (max-width: 576px) {
+    .card {
+        margin: 20px 12px;
+    }
+
+    .card-header {
+        padding: 20px 24px;
+    }
+
+    .deleteWarning {
+        font-size: 1.1rem;
+        padding: 14px 18px;
+    }
+
+    .dl-horizonal dt,
+    .dl-horizonal dd {
+        float: none;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+
+    .dl-horizonal dd {
+        margin-left: 0;
+        margin-bottom: 12px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .deleteButton,
+    .backButton {
+        width: 100%;
+        max-width: 320px;
+    }
+}

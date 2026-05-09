@@ -1,0 +1,16 @@
+﻿@using OrganikPazar_Odev.Models
+@model IEnumerable<Category>
+
+<a href="@Url.Action("Index", "Index")">
+    All List
+</a>
+
+@foreach (Category item in Model)
+{
+    <li>
+        <a href="@Url.Action("List", "Index", new { id = item.ID })">
+            @item.CategoryName
+        </a>
+    </li>
+}
+

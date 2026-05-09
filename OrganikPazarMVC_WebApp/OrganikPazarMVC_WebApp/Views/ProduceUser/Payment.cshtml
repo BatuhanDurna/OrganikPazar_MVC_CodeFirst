@@ -1,0 +1,44 @@
+﻿@model OrganikPazarMVC_WebApp.Data.PaymentViewModel
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<link href="~/AssestForUser/PaymentCSS.css" rel="stylesheet" />
+
+<div class="checkout-container">
+    @using (Html.BeginForm())
+    {
+        <div class="payment-form mb-5">
+            <h2>Payment Informations</h2>
+            <div style="color:red">
+                @ViewBag.status
+            </div>
+            <div class="input-group">
+                <label for="card-name">Cardholder Name</label>
+                @Html.EditorFor(model => model.Cardname, new { htmlAttributes = new { @placeholder = "Name Surname" } })
+                @Html.ValidationMessageFor(model => model.Cardname, "", new { @style = "color:red" })
+            </div>
+            <div class="input-group">
+                <label for="card-number">Card Number</label>
+                @Html.EditorFor(model => model.Cardnumber, new { htmlAttributes = new { @placeholder = "0000000000000" } })
+                @Html.ValidationMessageFor(model => model.Cardnumber, "", new { @style = "color:red" })
+            </div>
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="expiry">Card Expiry</label>
+                    @Html.EditorFor(model => model.Expiry, new { htmlAttributes = new { @placeholder = "10/2016" } })
+                    @Html.ValidationMessageFor(model => model.Expiry, "", new { @style = "color:red" })
+                </div>
+                <div class="input-group">
+                    <label for="cvv">Card CVV</label>
+                    @Html.EditorFor(model => model.CVV, new { htmlAttributes = new { @placeholder = "123" } })
+                    @Html.ValidationMessageFor(model => model.CVV, "", new { @style = "color:red" })
+                </div>
+            </div>
+
+            <button type="submit" class="pay-btn">Complete to Payment</button>
+        </div>
+    }
+</div>
+

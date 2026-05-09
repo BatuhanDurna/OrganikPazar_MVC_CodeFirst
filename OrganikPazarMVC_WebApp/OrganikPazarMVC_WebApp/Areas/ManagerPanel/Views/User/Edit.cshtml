@@ -1,0 +1,63 @@
+﻿@model OrganikPazar_Odev.Models.Users
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/ManagerPanel/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Areas/ManagerPanel/Assets/CategoryAddCSS.css" rel="stylesheet" />
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <h2>Edit User</h2>
+        </div>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Edit", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            @Html.AntiForgeryToken();
+            @Html.ValidationSummary();
+
+            if (TempData["basarili"] != null)
+            {
+                <div class="basarili">
+                    @TempData["basarili"]
+                </div>
+            }
+            if (TempData["basarisiz"] != null)
+            {
+                <div class="basarisiz">
+                    @TempData["basarisiz"]
+                </div>
+            }
+            <div class="container">
+                <div class="row">
+                    <label class="control-label">Name</label>
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "validationMessage" })
+                </div>
+                <div class="row">
+                    <label class="control-label">Surname</label>
+                    @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "validationMessage" })
+                </div>
+                <div class="row">
+                    <label class="control-label">Mail</label>
+                    @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "validationMessage" })
+                </div>
+                <div class="row">
+                    <label class="control-label">Password</label>
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "validationMessage" })
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" value="Edit User" class="formButton" />
+            </div>
+
+        }
+    </div>
+</div>
+

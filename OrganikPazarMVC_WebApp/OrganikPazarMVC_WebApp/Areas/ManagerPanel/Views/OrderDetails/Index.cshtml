@@ -1,0 +1,61 @@
+﻿@model IEnumerable<OrganikPazarMVC_WebApp.Models.OrderDetails>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ManagerPanel/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Areas/ManagerPanel/Assets/CategoryIndexCss.css" rel="stylesheet" />
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <h2>Order Detail List</h2>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped table-bordered table-responsive" cellpadding="0" cellspacing="0">
+            <tr class="col-sm-4">
+                <th>
+                    @Html.DisplayNameFor(model => model.ID)
+                </th>
+                <th>User</th>
+                <th>Produce</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Payment Verify</th>
+                <th>Options</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.ID
+                    </td>
+                    <td>
+                        @item.user.Name
+                    </td>
+                    <td>
+                        @item.produce.Name
+                    </td>
+                    <td>
+                        @item.Quantity
+                    </td>
+                    <td>
+                        @item.TotalPrice
+                    </td>
+                    <td>
+                        <label class="bi bi-check-circle-fill text-success fs-3"></label>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Approve","OrderDetails", new { id = item.ID})" class="btn btn-success"><span class="spinner-grow spinner-grow-sm"></span>  Onay bekliyor...</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="card-footer">
+        <label>@Model.Count() Adet sipariş bulunmaktadır</label>
+    </div>
+</div>
+

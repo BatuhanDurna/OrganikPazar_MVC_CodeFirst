@@ -1,0 +1,65 @@
+﻿@using OrganikPazarMVC_WebApp.Models
+@model IEnumerable<CartItem>
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<link href="~/AssestForUser/CartCSS.css" rel="stylesheet" />
+
+<div class="cartCarry">
+    <div class="text"><h2>Your Cart</h2></div>
+
+    @if (Model.Count() != 0)
+    {
+        <div class="cart">
+            <table class="cartTable" cellpadding="0" cellspacing="0">
+                @foreach (CartItem item in Model)
+                {
+                    <tr class="item">
+                        <td>@item.ID</td>
+                        <td>@item.Name</td>
+                        <td>@item.Price €</td>
+                        <td>
+                            <a href="@Url.Action("Increase", "ProduceUser", new { id = item.ID})" class="bi bi-arrow-up"></a>
+                            <span class="quantity"> @item.Quantity </span>
+                            <a href="@Url.Action("Decrease", "ProduceUser", new { id = item.ID})" class="bi bi-arrow-down"></a>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <img src="~/AssestForUser/FooterBankalar.png" />
+        </div>
+        <div class="cartSum">
+            <div class="textSum">
+                <h2>Total Price</h2>
+            </div>
+            <div class="casa">
+                <div class="row">
+                    <b>Total</b>
+                    <div class="price">
+                        @Model.Sum(x => (x.Price * x.Quantity)) €
+                    </div>
+                </div>
+            </div>
+
+            <div class="paymentPage col" style="padding:0 400px 0 400px; ">
+                <a href="@Url.Action("Payment", "ProduceUser")">Countinue to Payment</a>
+            </div>
+            <div class="backtoMarket mt-3 col" style="padding: 0 400px 0 400px; ">
+                <a href="@Url.Action("Index", "Index")">Back to Market</a>
+            </div>
+            <div class="clearCart mt-3 col" style="padding: 0 400px 0 400px; ">
+                <a href="@Url.Action("ClearCart", "ProduceUser")">Clear to Cart</a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <img src="~/AssestForUser/SepetBos.png" width="500" />
+        <div class="backButton mt-2">
+            <a href="@Url.Action("Index", "Index")"><span class="bi bi-bag"></span> Alışverişe Başla</a>
+        </div>
+    }
+</div>
+

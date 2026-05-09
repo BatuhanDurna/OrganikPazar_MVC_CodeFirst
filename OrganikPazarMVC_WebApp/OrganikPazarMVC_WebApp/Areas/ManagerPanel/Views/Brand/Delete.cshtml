@@ -1,0 +1,47 @@
+﻿@model OrganikPazar_Odev.Models.Brands
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/ManagerPanel/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Areas/ManagerPanel/Assets/CategoryDeleteCSS.css" rel="stylesheet" />
+
+<div>
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                <h2>Delete Brand</h2>
+            </div>
+        </div>
+        <div class="card-body">
+            <label class="deleteWarning">Bu marka silinecektir emin misiniz ?</label>
+            <dl class="dl-horizonal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.BrandName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BrandName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IsActive)
+                </dd>
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.ID)
+
+                <div class="form-actions">
+                    <input type="submit" value="Delete Brand" class="deleteButton" />
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "backButton" })
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+

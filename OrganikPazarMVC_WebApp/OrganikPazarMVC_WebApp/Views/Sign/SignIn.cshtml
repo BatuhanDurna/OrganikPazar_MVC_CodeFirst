@@ -1,0 +1,55 @@
+﻿@model OrganikPazarMVC_WebApp.Data.SignInViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sign In</title>
+    <link href="~/AssestForUser/SignCSS.css" rel="stylesheet" />
+</head>
+<body class="card-body">
+    <div class="loginCardContainer">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken();
+            @Html.ValidationSummary();
+
+
+            <div class="row">
+                <img src="~/AssestForUser/OrganikPazarSigninPhoto.png" width="325" />
+            </div>
+            if (TempData["basarisiz"] != null)
+            {
+                <div class="basarisiz">
+                    @TempData["basarisiz"]
+                </div>
+            }
+            <div class="row">
+                @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mail adresiniz" } })
+                @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "validationMessage" })
+            </div>
+            <div class="row">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Şifreniz" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "validationMessage" })
+            </div>
+            <div class="row">
+                <input type="submit" value="Sign in For Healthy Lifestyle" class="formbutton" />
+            </div>
+            <div class="row">
+                <label for="RememberMe">Remember Me</label>
+                <div>
+                    @Html.EditorFor(model => model.RememberMe)
+                </div>
+            </div>
+            <div class="row">
+                <label>If you don't have an account ? <a href="@Url.Action("SignUp", "Sign")">Sign Up</a> Let's Join Us</label>
+            </div>
+
+        }
+    </div>
+</body>
+</html>

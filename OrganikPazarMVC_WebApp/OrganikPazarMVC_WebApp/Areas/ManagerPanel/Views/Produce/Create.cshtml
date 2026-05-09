@@ -1,0 +1,84 @@
+﻿@model OrganikPazar_Odev.Models.Produces
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/ManagerPanel/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Areas/ManagerPanel/Assets/CategoryAddCSS.css" rel="stylesheet" />
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <h2>Add Produce</h2>
+        </div>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Create", "Produce", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken();
+            @Html.ValidationSummary();
+
+            if (TempData["basarili"] != null)
+            {
+                <div class="basarili">
+                    @TempData["basarili"]
+                </div>
+            }
+            if (TempData["basarisiz"] != null)
+            {
+                <div class="basarisiz">
+                    @TempData["basarisiz"]
+                </div>
+            }
+            <div class="container">
+                <div class="row">
+                    <label class="control-label">Produce Name</label>
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "validationMessage" })
+                </div>
+                <div class="row">
+                    <label class="control-label">Select Category</label>
+                    @Html.DropDownList("Category_ID", null, "Select Category",htmlAttributes: new { @class = "form-select" })
+                </div>
+                <div class="row">
+                    <label class="control-label">Select Brand</label>
+                    @Html.DropDownList("Brand_ID", null, "Select Brand", htmlAttributes: new { @class = "form-select" })
+                </div>
+                <div class="row">
+                    <label class="control-label">Select Unit</label>
+                    @Html.DropDownList("Unit_ID", null, "Select Unit", htmlAttributes: new { @class = "form-select" })
+                </div>
+                <div class="row">
+                    <label class="control-label">Stock</label>
+                    @Html.EditorFor(model => model.Stock, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Stock, "", new { @class = "validationMessage" })
+                </div>
+                <div class="row">
+                    <label class="control-label">Price</label>
+                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "validationMessage" })
+                </div>
+                <div class="row">
+                    <label class="control-label">Description</label>
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "validationMessage" })
+                </div>
+                <div class="row">
+                    <label class="control-label">Picture</label>
+                    <input type="file" class="form-control" name="Picture" />
+                </div>
+                <div class="row">
+                    <label for="IsActive">Publish to Produce</label>
+                    <div style="margin-left:2px">
+                        @Html.EditorFor(model => model.IsActive)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" value="Add Produce" class="formButton" />
+            </div>
+
+        }
+    </div>
+</div>
+

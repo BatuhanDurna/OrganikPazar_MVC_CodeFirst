@@ -1,0 +1,135 @@
+﻿/* ====================== INDEX SAYFASI - CATEGORY LIST ====================== */
+
+/* Card Footer */
+.card-footer {
+    background: #F5EDE1;
+    padding: 18px 35px;
+    color: #2C3E2F;
+    font-weight: 600;
+    font-size: 15px;
+    border-top: 1px solid #8BC34A;
+    text-align: center;
+}
+
+/* Başlık + Create Butonu */
+.card-header .card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+    .card-header .card-title h2 {
+        margin: 0;
+        font-size: 28px;
+        color: yellowgreen;
+    }
+
+    .card-header .card-title a {
+        background: linear-gradient(135deg, #4A7043, #6B9B5E);
+        color: white;
+        padding: 12px 28px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 15px;
+        box-shadow: 0 6px 15px rgba(74, 112, 67, 0.3);
+        transition: all 0.3s ease;
+    }
+
+        .card-header .card-title a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(74, 112, 67, 0.4);
+        }
+
+/* Tablo */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+    .table th {
+        background: #4A7043;
+        color: white;
+        padding: 18px 15px;
+        text-align: left;
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .table td {
+        padding: 16px 15px;
+        border-bottom: 1px solid #eee;
+        vertical-align: middle;
+        color: #2C3E2F;
+    }
+
+    
+
+    /* Aktif / Pasif Etiketler */
+    .table td label {
+        font-weight: 600;
+        padding: 6px 16px;
+        border-radius: 30px;
+        font-size: 14px;
+    }
+
+        .table td label[style*="darkolivegreen"] {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .table td label[style*="darkred"] {
+            background: #FFEBEE;
+            color: #C62828;
+        }
+
+/* Düzenle ve Sil Butonları */
+.tablebutton {
+    padding: 9px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.duzenlebuton {
+    background: #FF9800;
+    color: white;
+}
+
+    .duzenlebuton:hover {
+        background: #F57C00;
+        color: white;
+        transform: scale(1.05);
+    }
+
+.silbuton {
+    background: #f44336;
+    color: white;
+}
+
+    .silbuton:hover {
+        background: #d32f2f;
+        color: white;
+        transform: scale(1.05);
+    }
+
+.degistiricibuton{
+    background-color:black;
+    color:yellow;
+}
+
+    .degistiricibuton:hover {
+        background-color: black;
+        color: yellow;
+        transform: scale(1.05);
+    }

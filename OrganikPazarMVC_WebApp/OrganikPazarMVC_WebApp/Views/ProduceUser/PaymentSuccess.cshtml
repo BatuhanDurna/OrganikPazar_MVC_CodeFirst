@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "PaymentSuccess";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<style>
+    body {
+        background:#F9F9F9;
+    }
+    .evedon {
+        background-color: #0D791C;
+        text-decoration: none;
+        color: white;
+        font-weight: 600;
+        padding: 7px;
+        border-radius: 7px;
+        margin-left: 110px;
+    }
+    .evedon:hover{
+        color:white;
+    }
+</style>
+
+<div class="successBox">
+
+    <div class="col">
+        <img src="~/AssestForUser/PaymentSuccessFoto.png" width="400" />
+    </div>
+    <div class="col">
+        <a href="@Url.Action("Index", "Index")" class="evedon"><i class="bi bi-house"></i>  Ana Sayfaya Dön</a>
+    </div>
+    <div class="row">
+        <span class="mt-3 ms-3"><i class="bi bi-shield-check" style="background-color:forestgreen; color:white"></i> Bilgileriniz 256-bit SSL ile güvence altına alınmıştır</span>
+    </div>
+    
+</div>
+

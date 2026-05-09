@@ -1,0 +1,69 @@
+﻿@model IEnumerable<OrganikPazar_Odev.Models.Brands>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ManagerPanel/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Areas/ManagerPanel/Assets/CategoryIndexCss.css" rel="stylesheet" />
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <h2>Brand List</h2>
+            <a href="@Url.Action("Create","Brand")">+ Create Brand</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped table-bordered table-responsive" cellpadding="0" cellspacing="0">
+            <tr class="col-sm-4">
+                <th>
+                    @Html.DisplayNameFor(model => model.ID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BrandName)
+                </th>
+                <th>Status</th>
+                <th>Options</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.ID
+                    </td>
+                    <td>
+                        @item.BrandName
+                    </td>
+                    <td>
+                        @if (item.IsActive)
+                        {
+                            <label class="bi bi-check-circle-fill text-success fs-3"></label>
+                        }
+                        else
+                        {
+                            <label class="bi bi-x-circle-fill text-danger fs-3"></label>
+                        }
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit","Brand", new {id = item.ID})" class="duzenlebuton tablebutton"><i class="bi bi-pencil"></i></a>
+                        <a href="@Url.Action("Delete","Brand", new {id = item.ID})" class="silbuton tablebutton"><i class="bi bi-trash"></i></a>
+                        @if (item.IsActive == false)
+                        {
+                            <a href="@Url.Action("BeActive","Brand", new {id = item.ID})" class="degistiricibuton tablebutton bi bi-eye"></a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("BePassive","Brand", new {id = item.ID})" class="degistiricibuton tablebutton bi bi-eye-slash"></a>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="card-footer">
+        <label>@Model.Count() Adet marka bulunmaktadır</label>
+    </div>
+</div>
+
