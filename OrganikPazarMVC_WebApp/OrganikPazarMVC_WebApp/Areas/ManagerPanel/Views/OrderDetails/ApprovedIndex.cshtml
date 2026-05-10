@@ -57,11 +57,10 @@
     <div class="card-footer">
         <label>@Model.Count() Adet onaylanmış sipariş bulunmaktadır</label>
         <hr />
-        @foreach (var item in Model)
-        {
-            int totalPrice = Convert.ToInt32(item.Quantity * item.TotalPrice);
-            <label> Toplam @totalPrice € Kazanılmıştır.</label>
+        @{
+            decimal totalPrice = Model.Sum(x => x.Quantity * x.TotalPrice);
         }
+         <label> Toplam @totalPrice € Kazanılmıştır.</label>
     </div>
 </div>
 
