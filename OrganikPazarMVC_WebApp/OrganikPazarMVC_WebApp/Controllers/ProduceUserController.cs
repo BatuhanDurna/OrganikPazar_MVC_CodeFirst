@@ -28,6 +28,11 @@ namespace OrganikPazarMVC_WebApp.Controllers
         }
         public ActionResult AddToCard(int id)
         {
+            if (Session["user"] == null)
+            {
+                return RedirectToAction("SignIn", "Sign");
+            }
+
             Produces p = db.Produces.Find(id);
 
             if (p == null)
@@ -164,6 +169,12 @@ namespace OrganikPazarMVC_WebApp.Controllers
                 }
 
                 decimal price = Items.Sum(x => x.Price * x.Quantity);
+
+                if (DateTime.Now.Day == 26)
+                {
+                    price *= 0.50m;
+                }
+
                 string priceStr = price.ToString().Replace(",", ".");
                 string apiurl = "https://localhost:44309/API/PayAPI?merchandID=123456&merchandPassword=3366&price=" + priceStr + "&CardNumber=" + model.Cardnumber + "&Cvv=" + model.CVV + "&month=" + date[0] + "&year=" + date[1]; 
                 HttpClient client = new HttpClient();
@@ -212,11 +223,16 @@ namespace OrganikPazarMVC_WebApp.Controllers
                 }
                 else if (strinResp.Result == "\"999\"")
                 {
-                    //order ekle view de ekle
                     Users userId = (Users)Session["user"];
 
                     foreach (CartItem item in Items)
                     {
+                        decimal unitprice = item.Price;
+
+                        if (DateTime.Now.Day == 26)
+                        {
+                            unitprice *= 0.50m;
+                        }
 
                         OrderDetails od = new OrderDetails
                         {
@@ -224,7 +240,7 @@ namespace OrganikPazarMVC_WebApp.Controllers
                             Produce_ID = item.ID,
                             Quantity = item.Quantity,
                             IsApprove = false,
-                            TotalPrice = item.Price * item.Quantity
+                            TotalPrice = unitprice * item.Quantity
                         };
 
                         db.OrderDetails.Add(od);

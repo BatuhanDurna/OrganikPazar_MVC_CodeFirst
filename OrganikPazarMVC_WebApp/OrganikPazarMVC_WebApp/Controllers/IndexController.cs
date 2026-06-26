@@ -29,8 +29,6 @@ namespace OrganikPazarMVC_WebApp.Controllers
                     CategoryName = x.category.CategoryName,
                     category = x.category,
 
-                    User_ID = x.User_ID,
-                    CreationTime = x.user != null ? x.user.CreationTime : DateTime.MinValue
                 }).ToList();
 
             return View(model);

@@ -108,7 +108,7 @@ namespace OrganikPazarMVC_WebApp.Controllers
                 Response.Cookies.Add(cookie);
             }
 
-            return RedirectToAction("SignIn", "Sign");
+            return RedirectToAction("Index", "Index");
         }
     }
 }
