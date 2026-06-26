@@ -7,44 +7,47 @@
 
 <link href="~/AssestForUser/ProduceListCSS.css" rel="stylesheet" />
 
-@* Col eklenecek  *@
-<div class="productContainer">
-    @foreach (var item in Model)
-    {
-        <div class="produceItem">
-            <img src="~/Areas/ManagerPanel/Assets/ProductImage/@item.ImagePath" width="150" />
-            <div class="name">
-                @item.ProduceName
+<div class="productContainer py-3">
+    <div class="row g-3">
+        @foreach (var item in Model)
+        {
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="produceItem">
+                    <img src="~/Areas/ManagerPanel/Assets/ProductImage/@item.ImagePath" width="150" />
+                    <div class="name text-dark">
+                        @item.ProduceName
+                    </div>
+                    <div class="category">
+                        @if (item.category != null)
+                        {
+                            @item.category.CategoryName
+                        }
+                        else
+                        {
+                            <span>Kategori Bulunamadı</span>
+                        }
+                    </div>
+                    <div class="price">
+                        @if (DateTime.Now.Day == 26)
+                        {
+                            decimal anniversaryGift = item.Price * 0.50m;
+                            <s class="text text-muted">@item.Price.ToString("F2") €</s>
+                            <strong class="text-danger">@anniversaryGift.ToString("F2") €</strong>
+                        }
+                        else
+                        {
+                            <span class="text-danger">@item.Price.ToString("F2") €</span>
+                        }
+                    </div>
+                    <div class="addToCart">
+                        <a href="@Url.Action("AddToCard", "ProduceUser", new { id = item.Produce_ID })">
+                            <i class="bi bi-cart-plus"></i> Buy
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="category">
-                @if (item.category != null)
-                {
-                    @item.category.CategoryName
-                }
-                else
-                {
-                    <span>Kategori Bulunamadı</span>
-                }
-            </div>
-            <div class="price">
-                @if (item.user != null && item.user.CreationTime.Month == DateTime.Now.Month && item.user.CreationTime.Day == DateTime.Now.Day)
-                {
-                    decimal anniversaryGift = item.Price * 0.50m;
-                    <s class="text-muted">@item.Price.ToString("F2") €</s>
-                    <strong class="text-danger">@anniversaryGift.ToString("F2") €</strong>
-                }
-                else
-                {
-                    <span class="text-danger">@item.Price.ToString("F2") €</span>
-                }
-            </div>
-            <div class="addToCart">
-                <a href="@Url.Action("AddToCard", "ProduceUser", new { id = item.Produce_ID })">
-                    <i class="bi bi-cart-plus"></i> Buy
-                </a>
-            </div>
-        </div>
-
-    }
+            
+        }
+    </div>
 </div>
 

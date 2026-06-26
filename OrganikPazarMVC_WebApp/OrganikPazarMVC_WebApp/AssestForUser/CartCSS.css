@@ -160,3 +160,8 @@
         color:black;
     }
 
+s {
+    text-decoration: line-through;
+    text-decoration-thickness: 3px;
+}
+

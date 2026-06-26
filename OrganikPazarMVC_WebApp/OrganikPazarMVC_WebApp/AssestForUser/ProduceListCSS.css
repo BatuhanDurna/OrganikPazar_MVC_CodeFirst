@@ -1,6 +1,5 @@
 ﻿.productContainer {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
     gap: 20px;
     padding: 20px;
 }
@@ -10,7 +9,6 @@
     background: #fff;
     border: 1px solid #e6e6e6;
     border-radius: 12px;
-    padding: 12px;
     text-align: center;
     transition: 0.2s ease-in-out;
     display: flex;
@@ -27,7 +25,7 @@
     /* resim */
     .produceItem img {
         width: 100%;
-        height: 140px;
+        height: 200px;
         object-fit: cover;
         border-radius: 8px;
         margin-bottom: 10px;
@@ -67,3 +65,4 @@
     .addToCart a:hover {
         background: #556b1a;
     }
+
