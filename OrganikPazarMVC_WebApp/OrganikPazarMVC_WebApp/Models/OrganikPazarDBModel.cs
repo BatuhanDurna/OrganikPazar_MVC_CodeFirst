@@ -18,6 +18,8 @@ namespace OrganikPazarMVC_WebApp.Models
         public DbSet<Units> Units { get; set; }
         public DbSet<Users> Users { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<District> Districts { get; set; }
         public DbSet<Produces> Produces { get; set; }
 
 

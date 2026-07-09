@@ -18,6 +18,8 @@ namespace OrganikPazarMVC_WebApp.Controllers
         OrganikPazarDBModel db = new OrganikPazarDBModel();
         public ActionResult Cart()
         {
+            ViewBag.CityID = new SelectList(db.Cities, "ID", "CityName");
+
             List<CartItem> Items = new List<CartItem>();
             if (Request.Cookies["cart"] != null)
             {
@@ -26,6 +28,21 @@ namespace OrganikPazarMVC_WebApp.Controllers
             }
             return View(Items);
         }
+
+        public ActionResult LoadDistricts(int cityId)
+        {
+            var district = db.Districts
+            .Where(x => x.City_ID == cityId)
+            .Select(x => new
+            {
+                ID = x.ID,
+                DistrictName = x.DistrictName
+            })
+            .ToList();
+
+            return Json(district, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult AddToCard(int id)
         {
             if (Session["user"] == null)
@@ -149,6 +166,20 @@ namespace OrganikPazarMVC_WebApp.Controllers
             return RedirectToAction("Cart", "ProduceUser");
         }
 
+        [HttpPost]
+        public ActionResult AddAddress(AddressViewModel addressvm)
+        {
+            if (ModelState.IsValid)
+            {
+                Session["Address"] = addressvm;
+
+                return RedirectToAction("Payment");
+            }
+            TempData["hata"] = "Lütfen Adres bilgilerini doğru girdiğinize emin olunuz";
+
+            return RedirectToAction("Cart");
+        }
+
         [HttpGet]
         public ActionResult Payment()
         {
@@ -225,6 +256,8 @@ namespace OrganikPazarMVC_WebApp.Controllers
                 {
                     Users userId = (Users)Session["user"];
 
+                    AddressViewModel adres = (AddressViewModel)Session["Address"];
+
                     foreach (CartItem item in Items)
                     {
                         decimal unitprice = item.Price;
@@ -240,7 +273,14 @@ namespace OrganikPazarMVC_WebApp.Controllers
                             Produce_ID = item.ID,
                             Quantity = item.Quantity,
                             IsApprove = false,
-                            TotalPrice = unitprice * item.Quantity
+                            TotalPrice = unitprice * item.Quantity,
+
+                            //adres
+                            ReceiverName = adres.ReceiverName,
+                            Phone = adres.Phone,
+                            City_ID = adres.City_ID,
+                            District_ID = adres.District_ID,
+                            AddresDetail = adres.AddresDetail
                         };
 
                         db.OrderDetails.Add(od);
@@ -252,6 +292,8 @@ namespace OrganikPazarMVC_WebApp.Controllers
                     cookie.Value = null;
                     cookie.Expires = DateTime.Now.AddDays(-1);
                     Response.Cookies.Add(cookie);
+
+                    Session["Address"] = null;
                     return RedirectToAction("PaymentSuccess");
                 }                
             }
@@ -269,9 +311,5 @@ namespace OrganikPazarMVC_WebApp.Controllers
             return View();
         }
 
-        public void SaveOrderDetails()
-        {
-
-        }
     }
 }

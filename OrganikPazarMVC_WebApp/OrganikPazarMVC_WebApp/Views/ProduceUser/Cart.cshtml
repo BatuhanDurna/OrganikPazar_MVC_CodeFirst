@@ -39,7 +39,6 @@
                     </tr>
                 }
             </table>
-            <img src="~/AssestForUser/FooterBankalar.png" />
         </div>
         <div class="cartSum">
             <div class="textSum">
@@ -73,10 +72,6 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
 
-                    <div class="paymentPage">
-                        <a href="@Url.Action("Payment","ProduceUser")">Continue to Payment</a>
-                    </div>
-
                     <div class="backtoMarket mt-3">
                         <a href="@Url.Action("Index","Index")">Back to Market</a>
                     </div>
@@ -93,10 +88,16 @@
             <div class="row mt-3">
                 <div class="col">
                     <h4>Your Address</h4>
-                    <div class="col-md-5 border border-dark rounded-3 p-3 btn btn-success">
-                        + Add Address
-                        @* Devam Edilecek *@
+                    <div class="col-md-5 border border-dark rounded-3 p-3 btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#area">
+                        + Add Address and Countinue to Payment
                     </div>
+
+                    @if (TempData["hata"] != null)
+                    {
+                        <div class="text-danger fw-bold mt-2" style="font-size: 14px;">
+                            <i class="bi-exclamation-triangle"></i> @TempData["hata"]
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -109,4 +110,76 @@
         </div>
     }
 </div>
+
+<div class="offcanvas offcanvas-end bg-dark" style="width:40%" id="area">
+    <div class="offcanvas-header">
+        <h2 class="text text-light">Add your adress</h2>
+        <button class="btn-close text text-bg-light" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        @using (Html.BeginForm("AddAddress", "ProduceUser", FormMethod.Post))
+        {
+            
+            <label class="mb-2" for="receiver" style="color:aliceblue">Receiver Name</label>
+            <input type="text" name="ReceiverName" class="form-control" placeholder="Name Surname" />
+
+            <label class="mb-2 mt-2" for="phone" style="color:aliceblue">Phone</label>
+            <input type="text" name="Phone" class="form-control" placeholder="05113339988" />
+
+            <label class="mb-2 mt-2" for="city" style="color:aliceblue">City</label>
+            @Html.DropDownList("City_ID", (SelectList)ViewBag.CityID, "Select your City", htmlAttributes: new { @class = "form-select" })
+
+            <label class="mb-2 mt-2" for="district" style="color:aliceblue">District</label>
+            <select id="DistrictID" name="District_ID" class="form-select">
+                <option value="">Select your District</option>
+            </select>
+
+            <label class="mb-2 mt-2" for="AddresDetail" style="color:aliceblue">Addres Detail</label>
+            <textarea id="AddresDetail" name="AddresDetail" class="form-control" style="width:580px; height:145px;" placeholder="Neighborhood,Street,No etc..."></textarea>
+
+            <button type="submit" class="btn btn-success mt-4 w-100 fw-bold">Add Address</button>
+
+
+        }
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var citySelect = document.getElementById("City_ID");
+        var districtSelect = document.getElementById("DistrictID");
+
+        if (citySelect) {
+            citySelect.addEventListener("change", function () {
+                var selectedCityId = this.value;
+
+                districtSelect.innerHTML = '<option value="">Select your District</option>';
+
+                if (selectedCityId) {
+                    var url = '@Url.Action("LoadDistricts", "ProduceUser")' + '?cityId=' + selectedCityId;
+
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            data.forEach(function (item) {
+                                var id = item.ID !== undefined ? item.ID : item.id;
+                                var name = item.DistrictName !== undefined ? item.DistrictName : item.districtName;
+
+                                var option = document.createElement("option");
+                                option.value = id;
+                                option.text = name;
+                                districtSelect.appendChild(option);
+                            });
+                        })
+                        .catch(error => {
+                            console.error("Hata:", error);
+                            alert("İlçeler yüklenirken bir hata oluştu.");
+                        });
+                }
+            });
+        }
+    });
+</script>
+
 

@@ -1,5 +1,4 @@
-﻿using OrganikPazar_Odev.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,25 +7,13 @@ using System.Web;
 
 namespace OrganikPazarMVC_WebApp.Models
 {
-    public class OrderDetails
+    public class AddressViewModel
     {
-        public int ID { get; set; }
-
-
-        public int User_ID { get; set; }
-        [ForeignKey("User_ID")]
-        public virtual Users user { get; set; }
-
-        public int Produce_ID { get; set; }
-        [ForeignKey("Produce_ID")]
-        public virtual Produces produce { get; set; }
-
-        public int? City_ID { get; set; }
+        public int City_ID { get; set; }
         [ForeignKey("City_ID")]
         public virtual City city { get; set; }
 
-        
-        public int? District_ID { get; set; }
+        public int District_ID { get; set; }
         [ForeignKey("District_ID")]
         public virtual District district { get; set; }
 
@@ -38,10 +25,6 @@ namespace OrganikPazarMVC_WebApp.Models
         public string Phone { get; set; }
 
         [Required(ErrorMessage = "Bu alan boş bıraklamaz")]
-        public string AddresDetail  { get; set; }
-        public int Quantity { get; set; }
-        public decimal TotalPrice { get; set; }
-
-        public bool IsApprove { get; set; }
+        public string AddresDetail { get; set; }
     }
 }
