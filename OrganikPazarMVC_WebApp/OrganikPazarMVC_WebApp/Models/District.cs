@@ -4,19 +4,16 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
-using System.Web.UI.WebControls;
 
 namespace OrganikPazarMVC_WebApp.Models
 {
-    public class CartItem
+    public class District
     {
         public int ID { get; set; }
-
-        public string Name { get; set; }
-
-        public int Quantity { get; set; }
-
-        public decimal Price { get; set; }
-
+        public int City_ID { get; set; }
+        [ForeignKey("City_ID")]
+        public virtual City city { get; set; }
+        public string DistrictName { get; set; }
+        
     }
 }

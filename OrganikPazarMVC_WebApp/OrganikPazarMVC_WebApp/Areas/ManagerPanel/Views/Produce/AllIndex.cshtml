@@ -14,68 +14,69 @@
         </div>
     </div>
     <div class="card-body">
-        <table class="table table-responsive-lg" cellpadding="0" cellspacing="0">
-            <tr class="col-md-2">
-                <th>
-                    @Html.DisplayNameFor(model => model.ID)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ImagePath)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.category.CategoryName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.unit.UnitName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.brand.BrandName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Stock)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>Status</th>
-                <th>Undo</th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr style="background-color:indianred">
-                    <td>@item.ID</td>
-                    <td><img src="~/Areas/ManagerPanel/Assets/ProductImage/@item.ImagePath" width="100" /></td>
-                    <td>@item.Name</td>
-                    <td>@item.category.CategoryName</td>
-                    <td>@item.unit.UnitName</td>
-                    <td>@item.brand.BrandName</td>
-                    <td>@item.Stock @item.unit.UnitName</td>
-                    <td>@item.Price €</td>
-                    <td>@item.Description</td>
-                    <td>
-                        @if (item.IsActive)
-                        {
-                            <label class="bi bi-check-circle-fill text-success fs-3"></label>
-                        }
-                        else
-                        {
-                            <label class="bi bi-x-circle-fill text-danger fs-3"></label>
-                        }
-                    <td>
-                        <a href="@Url.Action("BackUp","Produce", new {id = item.ID})" style="color:aliceblue" class="bi bi-arrow-counterclockwise fs-3"></a>
-                    </td>
+        <div class="table-responsive">
+            <table class="table w-100" cellpadding="0" cellspacing="0">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ImagePath)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.category.CategoryName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.unit.UnitName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.brand.BrandName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Stock)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>Status</th>
+                    <th>Undo</th>
                 </tr>
-            }
 
-        </table>
+                @foreach (var item in Model)
+                {
+                    <tr style="background-color:indianred">
+                        <td>@item.ID</td>
+                        <td><img src="~/Areas/ManagerPanel/Assets/ProductImage/@item.ImagePath" width="100" /></td>
+                        <td>@item.Name</td>
+                        <td>@item.category.CategoryName</td>
+                        <td>@item.unit.UnitName</td>
+                        <td>@item.brand.BrandName</td>
+                        <td>@item.Stock @item.unit.UnitName</td>
+                        <td>@item.Price €</td>
+                        <td>@item.Description</td>
+                        <td>
+                            @if (item.IsActive)
+                            {
+                                <label class="bi bi-check-circle-fill text-success fs-3"></label>
+                            }
+                            else
+                            {
+                                <label class="bi bi-x-circle-fill text-danger fs-3"></label>
+                            }
+                        <td>
+                            <a href="@Url.Action("BackUp","Produce", new {id = item.ID})" style="color:aliceblue" class="bi bi-arrow-counterclockwise fs-3"></a>
+                        </td>
+                    </tr>
+                }
 
+            </table>
+        </div>
     </div>
     <div class="card-footer">
         <label>@Model.Count() Adet silinmiş ürün bulmaktadır</label>

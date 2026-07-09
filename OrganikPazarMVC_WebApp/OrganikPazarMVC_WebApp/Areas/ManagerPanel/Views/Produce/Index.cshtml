@@ -15,77 +15,78 @@
         </div>
     </div>
     <div class="card-body">
-        <table class="table table-striped table-bordered table-responsive-lg" cellpadding="0" cellspacing="0">
-            <tr class="col-md-2">
-                <th>
-                    @Html.DisplayNameFor(model => model.ID)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ImagePath)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.category.CategoryName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.unit.UnitName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.brand.BrandName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Stock)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>Status</th>
-                <th>Options</th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered w-100" cellpadding="0" cellspacing="0">
                 <tr>
-                    <td>@item.ID</td>
-                    <td><img src="~/Areas/ManagerPanel/Assets/ProductImage/@item.ImagePath" width="100" /></td>
-                    <td>@item.Name</td>
-                    <td>@item.category.CategoryName</td>
-                    <td>@item.unit.UnitName</td>
-                    <td>@item.brand.BrandName</td>
-                    <td>@item.Stock @item.unit.UnitName</td>
-                    <td>@item.Price €</td>
-                    <td>@item.Description</td>
-                    <td>
-                        @if (item.IsActive)
-                        {
-                            <label class="bi bi-check-circle-fill text-success fs-3"></label>
-                        }
-                        else
-                        {
-                            <label class="bi bi-x-circle-fill text-danger fs-3"></label>
-                        }
-                    <td>
-                        <a href="@Url.Action("Edit","Produce", new {id = item.ID})" style="margin-bottom:5px" class="duzenlebuton tablebutton bi bi-pencil"></a>
-                        <a href="@Url.Action("Delete","Produce", new {id = item.ID})" style="margin-bottom:5px"  class="silbuton tablebutton bi bi-trash"></a>
-                        @if (item.IsActive == false)
-                        {
-                            <a href="@Url.Action("BeActive","Produce", new {id = item.ID})" class="degistiricibuton tablebutton bi bi-eye"></a>
-                        }
-                        else
-                        {
-                            <a href="@Url.Action("BePassive","Produce", new {id = item.ID})" class="degistiricibuton tablebutton bi bi-eye-slash"></a>
-                        }
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ImagePath)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.category.CategoryName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.unit.UnitName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.brand.BrandName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Stock)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>Status</th>
+                    <th>Options</th>
                 </tr>
-            }
 
-        </table>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td><img src="~/Areas/ManagerPanel/Assets/ProductImage/@item.ImagePath" width="100" /></td>
+                        <td>@item.Name</td>
+                        <td>@item.category.CategoryName</td>
+                        <td>@item.unit.UnitName</td>
+                        <td>@item.brand.BrandName</td>
+                        <td>@item.Stock @item.unit.UnitName</td>
+                        <td>@item.Price €</td>
+                        <td>@item.Description</td>
+                        <td>
+                            @if (item.IsActive)
+                            {
+                                <label class="bi bi-check-circle-fill text-success fs-3"></label>
+                            }
+                            else
+                            {
+                                <label class="bi bi-x-circle-fill text-danger fs-3"></label>
+                            }
+                        <td>
+                            <a href="@Url.Action("Edit","Produce", new {id = item.ID})" style="margin-bottom:5px" class="duzenlebuton tablebutton bi bi-pencil"></a>
+                            <a href="@Url.Action("Delete","Produce", new {id = item.ID})" style="margin-bottom:5px" class="silbuton tablebutton bi bi-trash"></a>
+                            @if (item.IsActive == false)
+                            {
+                                <a href="@Url.Action("BeActive","Produce", new {id = item.ID})" class="degistiricibuton tablebutton bi bi-eye"></a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("BePassive","Produce", new {id = item.ID})" class="degistiricibuton tablebutton bi bi-eye-slash"></a>
+                            }
+                        </td>
+                    </tr>
+                }
 
+            </table>
+        </div>
     </div>
     <div class="card-footer">
         <label>@Model.Count() Adet ürün bulmaktadır</label>
