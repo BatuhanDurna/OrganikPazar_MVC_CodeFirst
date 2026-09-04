@@ -66,3 +66,27 @@
         background: #556b1a;
     }
 
+.button {
+    background-color: #EB8B01;
+    color: #FFECC2;
+    padding: 7px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 7px;
+}
+
+.description {
+    color: yellowgreen;
+    text-shadow: 1px 1px 1px darkorange;
+    margin-bottom: 50px
+}
+
+.notfound .abutton {
+    background-color: #EB8B01;
+    color: #FFECC2;
+    padding: 7px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 7px;
+}
+
