@@ -457,6 +457,10 @@
     <Content Include="AssestForUser\bootstrap-5.3.8\js\bootstrap.esm.min.js" />
     <Content Include="AssestForUser\bootstrap-5.3.8\js\bootstrap.js" />
     <Content Include="AssestForUser\bootstrap-5.3.8\js\bootstrap.min.js" />
+    <Content Include="AssestForUser\carouselreklam1.jpeg" />
+    <Content Include="AssestForUser\carouselreklam2.jpeg" />
+    <Content Include="AssestForUser\carouselreklam3.jpeg" />
+    <Content Include="AssestForUser\notfoundphoto-rembg.png" />
     <Content Include="AssestForUser\PaymentCSS.css" />
     <Content Include="AssestForUser\PaymentSuccessFoto.png" />
     <Content Include="AssestForUser\CartCSS.css" />

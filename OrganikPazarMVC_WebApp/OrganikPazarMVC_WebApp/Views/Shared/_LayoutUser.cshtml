@@ -50,16 +50,17 @@
                     Auto
                 </button>
             </li>
-
         </ul>
-
     </div>
-    <div class="container">
-        <div class="card-header d-flex justify-content-between align-items-center bg-white">
+        <div class="card-header d-flex justify-content-between align-items-center bg-white sticky-top">
             <div class="card-img">
                 <a href="@Url.Action("Index","Index")">
                     <img src="~/AssestForUser/OrganikUserLogo.png" width="200" />
                 </a>
+            </div>
+            <div class="searchBar mt-4">
+                <span class="bi bi-search"></span>
+                <input id="filter" type="text" class="pe-5 ps-5 rounded-4" placeholder="Search" />
             </div>
             @if (Session["user"] != null)
             {
@@ -80,22 +81,19 @@
                 </div>
             }
         </div>
-    </div>
-    <div class="container">
-        <div class="card-title menu">
-            <ul>
-                <li>
-                    @{Html.RenderAction("_CreateMenu", "CategoryUser");}
-                </li>
-            </ul>
-        </div>
+    <div class="card-title menu">
+        <ul>
+            <li>
+                @{Html.RenderAction("_CreateMenu", "CategoryUser");}
+            </li>
+        </ul>
     </div>
     <div class="container">
         <div class="card-body">
             @RenderBody()
         </div>
     </div>
-    
+
     <div class="card-footer card-footer mt-auto" style="background-color: #fff2ea;">
         <div class="footer-stripe"></div>
         <div class="text-black d-flex mb-auto">
@@ -110,5 +108,45 @@
     </div>
     <script src="~/Scripts/jquery-4.0.0.min.js"></script>
     <script src="~/AssestForUser/bootstrap-5.3.8/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#filter").on("keyup", function () {
+                var data = $(this).val().toLowerCase();
+                if (data.trim() != "")
+                {
+                    $(".carouselContainer").hide();
+                }
+                else
+                {
+                    $(".carouselContainer").show();
+                }
+
+                $(".produceItem").filter(function () {
+                    var productName = $(this).find(".name").text().toLowerCase();
+                    $(this).toggle($(this).text().toLowerCase().indexOf(data) > -1);
+                    
+                    var bootstrapColumn = $(this).closest(".col-12");
+                    if (productName.indexOf(data) > -1)
+                    {
+                        bootstrapColumn.show();
+                    }
+                    else
+                    {
+                        bootstrapColumn.hide();
+                    }
+                });
+                var isProduceExist = $(".produceItem .name").text().toLowerCase().indexOf(data) > -1;
+
+                if (data === "" || isProduceExist)
+                {
+                    $("#notfound").attr("hidden", true);
+                }
+                else
+                {
+                    $("#notfound").removeAttr("hidden");
+                }
+            });
+        });
+    </script>
 </body>
 </html>
